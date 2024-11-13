@@ -1,0 +1,25 @@
+{
+  "name": "demo-api-back",
+  "version": "1.0.0",
+  "main": "server.js",
+  "author": "MacReiben",
+  "license": "GNU GPL v3",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "start:dev": "nodemon --exec ts-node server.ts"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "typescript-logging": "^2.2.0",
+    "typescript-logging-category-style": "^2.2.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.9.0",
+    "nodemon": "^3.1.7",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3"
+  }
+}
