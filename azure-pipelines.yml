@@ -19,3 +19,21 @@ steps:
       yarn build
     displayName: "Build the project"
     workingDirectory: "src"
+
+  - task: ArchiveFiles@2
+    inputs:
+      rootFolderOrFile: 'src'
+      includeRootFolder: false
+      archiveType: 'zip'
+      archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+      replaceExistingArchive: true
+
+  - task: AzureRmWebAppDeployment@4
+    inputs:
+      ConnectionType: 'AzureRM'
+      azureSubscription: 'Paiement à l’utilisation(9def68f1-61f0-4efa-b4fb-913d00d0d218)'
+      appType: 'webAppLinux'
+      WebAppName: 'demo-api-front'
+      packageForLinux: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+      RuntimeStack: 'NODE|18-lts'
+      StartupCommand: 'npm run start'
